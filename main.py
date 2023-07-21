@@ -4,6 +4,7 @@ from pydrive.drive import GoogleDrive
 from dateutil.relativedelta import relativedelta
 import argparse
 import json
+import os
 
 def upload_to_google_drive(file_path: str, new_filename: str, type: str) -> None:
     """upload the document to the drive
@@ -31,6 +32,8 @@ def upload_to_google_drive(file_path: str, new_filename: str, type: str) -> None
     print(f'[Success] {new_filename} was uploaded correctly. (File ID: {file["id"]})')
 
 if __name__ == '__main__':
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
     parser = argparse.ArgumentParser(usage='python main.py --path water.png --type water',
         description='upload the specified png to the drive')
     parser.add_argument('path', type=str, help='path to the document')
