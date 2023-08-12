@@ -34,7 +34,7 @@ def upload_to_google_drive(file_path: str, new_filename: str, type: str) -> None
 if __name__ == '__main__':
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    parser = argparse.ArgumentParser(usage='python main.py --path water.png --type water',
+    parser = argparse.ArgumentParser(usage='python main.py [image path] [type]',
         description='upload the specified png to the drive')
     parser.add_argument('path', type=str, help='path to the document')
     parser.add_argument('type', type=str, help='what the bill for, water or gas')
