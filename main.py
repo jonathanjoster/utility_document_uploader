@@ -27,7 +27,7 @@ def upload_to_google_drive(file_path: str, new_filename: str, type: str) -> None
 
     # upload the file
     file = drive.CreateFile({'title': new_filename, 'parents': [{'id': _dir_id}]})
-    file.SetContentFile(file_path)
+    file.SetContentFile(os.path.abspath(file_path))
     file.Upload()
     print(f'[Success] {new_filename} was uploaded correctly. (File ID: {file["id"]})')
 
