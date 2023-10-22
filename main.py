@@ -30,6 +30,7 @@ def upload_to_google_drive(file_path: str, new_filename: str, type: str) -> None
     file.SetContentFile(os.path.abspath(file_path))
     file.Upload()
     print(f'[Success] {new_filename} was uploaded correctly. (File ID: {file["id"]})')
+    print(f'To check the result, visit https://drive.google.com/drive/u/0/folders/{_dir_id}')
 
 if __name__ == '__main__':
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
