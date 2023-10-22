@@ -27,6 +27,13 @@ def upload_to_google_drive(file_path: str, new_filename: str, type: str) -> None
 
     # upload the file
     file = drive.CreateFile({'title': new_filename, 'parents': [{'id': _dir_id}]})
+
+    # flexible file path resolution
+    if not os.path.exists(file_path):
+        file_path = os.path.join(os.environ['HOME'], file_path)
+    if not os.path.exists(file_path):
+        raise FileNotFoundError('Target file was not found.')
+
     file.SetContentFile(os.path.abspath(file_path))
     file.Upload()
     print(f'[Success] {new_filename} was uploaded correctly. (File ID: {file["id"]})')
