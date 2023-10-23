@@ -6,5 +6,6 @@
 
 ## How to use
 ```
-python main.py --path water.png --type water
+python main.py [path] [type]
+python main.py water.png water
 ```
